@@ -1,13 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactSlice';
-import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-// import { Component } from "react";
-// import { nanoid } from 'nanoid';
-// import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/operations';
+import { useContacts } from '../../redux/selectors';
 import {
   FormField,
   Form,
@@ -33,7 +29,7 @@ const ContactFormSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useContacts();
 
   return (
     <Formik
